@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工事中 | remonkosyou</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-soft: #171a21;
+    --fg: #f5f6f8;
+    --fg-muted: #9aa1ac;
+    --accent: #f2b84b;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f5f6f8;
+      --bg-soft: #ffffff;
+      --fg: #16181d;
+      --fg-muted: #5b616c;
+      --accent: #b9750f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, -apple-system, sans-serif;
+    padding: 24px;
+  }
+  .card {
+    background: var(--bg-soft);
+    border-radius: 20px;
+    padding: 56px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+  .icon {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    letter-spacing: 0.02em;
+  }
+  p {
+    font-size: 15px;
+    color: var(--fg-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .bar {
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(128, 128, 128, 0.2);
+    margin: 28px 0 24px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    width: 35%;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+  .domain {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--fg-muted);
+    letter-spacing: 0.05em;
+  }
+  .notice {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--fg);
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="icon">🚧</div>
+    <h1>只今工事中です</h1>
+    <div class="bar"><div class="bar-fill"></div></div>
+    <p>このページは現在準備中です。<br>公開まで今しばらくお待ちください。</p>
+    <p class="notice">このページでレモン胡椒を買うことができるようになります。</p>
+    <div class="domain">remonkosyou.2re.fun</div>
+  </main>
+</body>
+</html>
