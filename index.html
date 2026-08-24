@@ -49,8 +49,19 @@
     line-height: 1;
     margin-bottom: 20px;
   }
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
   h1 {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     margin: 0 0 12px;
     letter-spacing: 0.02em;
@@ -66,7 +77,7 @@
     height: 6px;
     border-radius: 999px;
     background: rgba(128, 128, 128, 0.2);
-    margin: 28px 0 24px;
+    margin: 24px 0;
     overflow: hidden;
   }
   .bar-fill {
@@ -75,29 +86,28 @@
     border-radius: 999px;
     background: var(--accent);
   }
+  .notice {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 8px;
+  }
   .domain {
     margin-top: 24px;
     font-size: 12px;
     color: var(--fg-muted);
     letter-spacing: 0.05em;
   }
-  .notice {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(128, 128, 128, 0.2);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--fg);
-  }
 </style>
 </head>
 <body>
   <main class="card">
-    <div class="icon">🚧</div>
-    <h1>只今工事中です</h1>
+    <div class="icon">🍋</div>
+    <div class="badge">🚧 工事中</div>
+    <h1>えっちゃんのレモン胡椒</h1>
     <div class="bar"><div class="bar-fill"></div></div>
-    <p>このページは現在準備中です。<br>公開まで今しばらくお待ちください。</p>
     <p class="notice">このページでレモン胡椒を買うことができるようになります。</p>
+    <p>ただいま準備中です。公開まで今しばらくお待ちください。</p>
     <div class="domain">remonkosyou.2re.fun</div>
   </main>
 </body>
