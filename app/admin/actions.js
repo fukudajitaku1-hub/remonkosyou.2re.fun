@@ -1,9 +1,11 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { getContent, saveContent } from "../../lib/content";
+import { saveContent } from "../../lib/content";
 import { createSession, destroySession, isAuthenticated, verifyPassword } from "../../lib/auth";
 import { saveUploadedImage } from "../../lib/uploads";
+
+const MAX_RECIPES = 50;
 
 export async function loginAction(formData) {
   const password = formData.get("password");
@@ -34,8 +36,6 @@ export async function saveContentAction(formData) {
 
   const get = (key) => (formData.get(key) || "").toString().trim();
 
-  const current = await getContent();
-
   const stores = [];
   for (let i = 1; i <= 4; i++) {
     const name = get(`home_store${i}_name`);
@@ -52,7 +52,8 @@ export async function saveContentAction(formData) {
   }
 
   const recipes = [];
-  for (let i = 1; i <= 2; i++) {
+  for (let i = 1; i <= MAX_RECIPES; i++) {
+    if (!formData.has(`recipe_r${i}_title`)) break;
     const title = get(`recipe_r${i}_title`);
     if (!title) continue;
 
@@ -66,7 +67,7 @@ export async function saveContentAction(formData) {
       groups.push({ label: get(`recipe_r${i}_group2Label`), items: group2Items });
     }
 
-    let photo = current.recipe.recipes[i - 1]?.photo || "";
+    let photo = get(`recipe_r${i}_currentPhoto`);
     const photoFile = formData.get(`recipe_r${i}_photoFile`);
     if (photoFile && photoFile.size > 0) {
       const uploadedPath = await saveUploadedImage(photoFile);

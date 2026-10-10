@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getContent } from "../../lib/content";
 import { isAuthenticated } from "../../lib/auth";
 import { logoutAction, saveContentAction } from "./actions";
+import RecipeEditor from "./RecipeEditor";
 
 export const dynamic = "force-dynamic";
 
@@ -125,76 +126,7 @@ export default async function AdminPage({ searchParams }) {
             <textarea name="recipe_intro" defaultValue={recipe.intro} />
           </label>
 
-          {[0, 1].map((i) => {
-            const r = recipe.recipes[i] || {};
-            const groups = r.ingredientGroups || [];
-            return (
-              <fieldset className="admin-recipe" key={i}>
-                <legend>レシピ{i + 1}</legend>
-                <div className="admin-photo-field">
-                  {r.photo && <img className="admin-photo-preview" src={r.photo} alt="" />}
-                  <label>
-                    写真をアップロード（選択しない場合は現在の写真のまま）
-                    <input
-                      type="file"
-                      name={`recipe_r${i + 1}_photoFile`}
-                      accept="image/jpeg,image/png,image/webp,image/gif"
-                    />
-                  </label>
-                </div>
-                <label>
-                  タイトル
-                  <input name={`recipe_r${i + 1}_title`} defaultValue={r.title || ""} />
-                </label>
-                <label>
-                  リード文（任意）
-                  <textarea name={`recipe_r${i + 1}_lead`} defaultValue={r.lead || ""} />
-                </label>
-                <label>
-                  材料見出し
-                  <input name={`recipe_r${i + 1}_ingredientsLabel`} defaultValue={r.ingredientsLabel || ""} />
-                </label>
-                <label>
-                  材料グループ1見出し（任意）
-                  <input name={`recipe_r${i + 1}_group1Label`} defaultValue={groups[0]?.label || ""} />
-                </label>
-                <label>
-                  材料グループ1（1行に1項目）
-                  <textarea
-                    name={`recipe_r${i + 1}_group1Items`}
-                    defaultValue={(groups[0]?.items || []).join("\n")}
-                  />
-                </label>
-                <label>
-                  材料グループ2見出し（任意）
-                  <input name={`recipe_r${i + 1}_group2Label`} defaultValue={groups[1]?.label || ""} />
-                </label>
-                <label>
-                  材料グループ2（1行に1項目、任意）
-                  <textarea
-                    name={`recipe_r${i + 1}_group2Items`}
-                    defaultValue={(groups[1]?.items || []).join("\n")}
-                  />
-                </label>
-                <label>
-                  作り方（1行に1手順）
-                  <textarea name={`recipe_r${i + 1}_steps`} defaultValue={(r.steps || []).join("\n")} />
-                </label>
-                <label>
-                  ワンポイント見出し
-                  <input name={`recipe_r${i + 1}_tipLabel`} defaultValue={r.tipLabel || ""} />
-                </label>
-                <label>
-                  ワンポイント本文
-                  <textarea name={`recipe_r${i + 1}_tip`} defaultValue={r.tip || ""} />
-                </label>
-                <label>
-                  結びの文（任意）
-                  <textarea name={`recipe_r${i + 1}_closing`} defaultValue={r.closing || ""} />
-                </label>
-              </fieldset>
-            );
-          })}
+          <RecipeEditor initialRecipes={recipe.recipes} />
         </section>
 
         <button type="submit" className="cta-link admin-save">
