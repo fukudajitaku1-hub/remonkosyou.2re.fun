@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { getContent, saveContent } from "../../lib/content";
 import { createSession, destroySession, isAuthenticated, verifyPassword } from "../../lib/auth";
+import { saveUploadedImage } from "../../lib/uploads";
 
 export async function loginAction(formData) {
   const password = formData.get("password");
@@ -65,8 +66,15 @@ export async function saveContentAction(formData) {
       groups.push({ label: get(`recipe_r${i}_group2Label`), items: group2Items });
     }
 
+    let photo = current.recipe.recipes[i - 1]?.photo || "";
+    const photoFile = formData.get(`recipe_r${i}_photoFile`);
+    if (photoFile && photoFile.size > 0) {
+      const uploadedPath = await saveUploadedImage(photoFile);
+      if (uploadedPath) photo = uploadedPath;
+    }
+
     recipes.push({
-      photo: get(`recipe_r${i}_photo`) || current.recipe.recipes[i - 1]?.photo || "",
+      photo,
       title,
       lead: get(`recipe_r${i}_lead`),
       ingredientsLabel: get(`recipe_r${i}_ingredientsLabel`),

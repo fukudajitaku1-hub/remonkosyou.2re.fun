@@ -83,6 +83,8 @@ ADMIN_SESSION_SECRET=セッションCookie署名用のランダムな文字列�
 
 編集した内容は `content.json` としてコンテナ内 `/app/data` に保存されます。このディレクトリは `docker-compose.yml` で名前付きボリューム `content_data` にマウントしているため、`docker compose up -d --build` でイメージを作り直しても編集内容は消えません（ボリューム自体を削除した場合は、次回アクセス時に `content/default-content.json` の内容で自動的に再作成されます）。
 
+レシピの写真は管理画面からアップロードでき（JPEG/PNG/WebP/GIF、上限 10MB）、アップロードした画像は `/app/data/uploads` に保存され、`/uploads/<ファイル名>` から配信されます（`content_data` ボリュームに含まれるため、こちらも再ビルドで消えません）。写真を選択しなかった場合は、現在の写真がそのまま使われます。
+
 ## 以前の構成からの変更点
 
 元々は素の `index.html` を Caddy の `file_server` で直接配信していましたが、Next.js に書き換えて Docker コンテナとして稼働する構成に移行し、レシピページと管理画面（コンテンツ編集機能）を追加しました。

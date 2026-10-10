@@ -131,10 +131,17 @@ export default async function AdminPage({ searchParams }) {
             return (
               <fieldset className="admin-recipe" key={i}>
                 <legend>レシピ{i + 1}</legend>
-                <label>
-                  写真パス
-                  <input name={`recipe_r${i + 1}_photo`} defaultValue={r.photo || ""} />
-                </label>
+                <div className="admin-photo-field">
+                  {r.photo && <img className="admin-photo-preview" src={r.photo} alt="" />}
+                  <label>
+                    写真をアップロード（選択しない場合は現在の写真のまま）
+                    <input
+                      type="file"
+                      name={`recipe_r${i + 1}_photoFile`}
+                      accept="image/jpeg,image/png,image/webp,image/gif"
+                    />
+                  </label>
+                </div>
                 <label>
                   タイトル
                   <input name={`recipe_r${i + 1}_title`} defaultValue={r.title || ""} />
