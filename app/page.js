@@ -27,7 +27,7 @@ export default function Home() {
       <section className="card-section">
         <h2>商品情報</h2>
         <img
-          className="recipe-photo"
+          className="product-photo"
           src="/images/product-photo.jpg"
           alt="えっちゃんのレモンコショウ"
         />
