@@ -31,7 +31,7 @@ body {
   padding: 24px;
 }
 p {
-  font-size: 16px;
+  font-size: 19px;
   color: var(--fg-muted);
   line-height: 1.7;
   margin: 0;
@@ -82,7 +82,7 @@ p {
   margin: 0 0 12px;
 }
 .page-header p {
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.8;
 }
 .page-header p + p {
@@ -106,7 +106,7 @@ p {
   margin: 24px 0 8px;
 }
 .card-section p {
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.8;
 }
 .card-section p + p {
@@ -139,7 +139,7 @@ p {
 }
 .spec-list dd {
   margin: 0;
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.8;
 }
 
@@ -216,7 +216,7 @@ p {
   }
 }
 .recipe-lead {
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.8;
   color: var(--fg-muted);
   margin: 0;
@@ -231,7 +231,7 @@ p {
 .step-list {
   margin: 0;
   padding-left: 20px;
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.9;
   color: var(--fg);
 }
@@ -252,7 +252,7 @@ p {
 }
 .recipe-closing {
   margin-top: 24px;
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.8;
   text-align: center;
   color: var(--fg-muted);
