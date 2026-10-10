@@ -26,23 +26,25 @@ export default function Home() {
 
       <section className="card-section">
         <h2>商品情報</h2>
-        <img
-          className="product-photo"
-          src="/images/product-photo.jpg"
-          alt="えっちゃんのレモンコショウ"
-        />
-        <dl className="spec-list">
-          <div>
-            <dt>内容量</dt>
-            <dd>100g</dd>
-          </div>
-          <div>
-            <dt>保存方法</dt>
-            <dd>
-              直接日光・高温多湿を避けて常温保存。開封後は冷蔵庫で保存し、お早めにお召し上がりください。
-            </dd>
-          </div>
-        </dl>
+        <div className="product-info">
+          <img
+            className="product-photo"
+            src="/images/product-photo.jpg"
+            alt="えっちゃんのレモンコショウ"
+          />
+          <dl className="spec-list">
+            <div>
+              <dt>内容量</dt>
+              <dd>100g</dd>
+            </div>
+            <div>
+              <dt>保存方法</dt>
+              <dd>
+                直接日光・高温多湿を避けて常温保存。開封後は冷蔵庫で保存し、お早めにお召し上がりください。
+              </dd>
+            </div>
+          </dl>
+        </div>
       </section>
 
       <section className="card-section">

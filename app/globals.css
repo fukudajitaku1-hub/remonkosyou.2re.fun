@@ -189,13 +189,22 @@ p {
   border-radius: 14px;
   margin-bottom: 20px;
 }
+.product-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
 .product-photo {
   display: block;
-  width: 45%;
-  max-width: 180px;
+  width: 38%;
+  max-width: 140px;
+  flex-shrink: 0;
   height: auto;
   border-radius: 14px;
-  margin: 0 0 20px;
+}
+.product-info .spec-list {
+  flex: 1;
+  min-width: 0;
 }
 .recipe-lead {
   font-size: 14px;
