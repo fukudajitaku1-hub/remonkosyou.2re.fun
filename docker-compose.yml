@@ -5,3 +5,11 @@ services:
     ports:
       - "127.0.0.1:3003:3000"
     restart: unless-stopped
+    environment:
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET}
+    volumes:
+      - content_data:/app/data
+
+volumes:
+  content_data:

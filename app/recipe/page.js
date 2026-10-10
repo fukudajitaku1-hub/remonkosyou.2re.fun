@@ -1,3 +1,8 @@
+import { Fragment } from "react";
+import { getContent } from "../../lib/content";
+
+export const dynamic = "force-dynamic";
+
 const title = "レシピ集";
 const description =
   "えっちゃんのレモン胡椒を使ったおすすめレシピ。ちくわチーズと、蒸し野菜とサラダチキンのヨーグルトディップをご紹介します。";
@@ -22,7 +27,9 @@ export const metadata = {
   },
 };
 
-export default function Recipe() {
+export default async function Recipe() {
+  const { recipe } = await getContent();
+
   return (
     <main className="page">
       <a className="back-link" href="/">
@@ -36,100 +43,58 @@ export default function Recipe() {
           alt="えっちゃんのレモンコショウ"
         />
         <h1>
-          えっちゃんの
-          <br />
-          レモンコショウ
-          <br />
-          レシピ集
+          {recipe.titleLines.map((line, i) => (
+            <Fragment key={i}>
+              {i > 0 && <br />}
+              {line}
+            </Fragment>
+          ))}
         </h1>
-        <p>
-          塩こうじをたっぷり使い、爽やかなレモンの香りと青唐辛子のピリっとした辛さを合わせた万能調味料「えっちゃんのレモンコショウ」を使った、おすすめレシピをご紹介します。
-        </p>
+        <p>{recipe.intro}</p>
       </header>
 
-      <article className="card-section">
-        <img
-          className="recipe-photo"
-          src="/images/recipe-chikuwa-cheese.jpg"
-          alt="レモンコショウ香る♪ちくわチーズ"
-        />
-        <h2>❶ レモンコショウ香る♪ちくわチーズ</h2>
+      {recipe.recipes.map((r, i) => (
+        <article className="card-section" key={i}>
+          <img className="recipe-photo" src={r.photo} alt={r.title} />
+          <h2>{r.title}</h2>
+          {r.lead && <p className="recipe-lead">{r.lead}</p>}
 
-        <h3>材料（2人分）</h3>
-        <ul className="ingredient-list">
-          <li>ちくわ…4本</li>
-          <li>スライスチーズ…2枚</li>
-          <li>カニカマ…4本</li>
-          <li>えっちゃんのレモンコショウ…小さじ1程度（お好みで）</li>
-        </ul>
+          <h3>{r.ingredientsLabel}</h3>
+          {r.ingredientGroups.map((group, gi) => (
+            <Fragment key={gi}>
+              {group.label && <p className="ingredient-group">{group.label}</p>}
+              <ul className="ingredient-list">
+                {group.items.map((item, ii) => (
+                  <li key={ii}>{item}</li>
+                ))}
+              </ul>
+            </Fragment>
+          ))}
 
-        <h3>作り方</h3>
-        <ol className="step-list">
-          <li>ちくわに縦に切り込みを入れます。</li>
-          <li>半分に切ったスライスチーズを詰めます。</li>
-          <li>カニカマをのせます。</li>
-          <li>オーブントースターでチーズがとろけるまで約3〜5分焼きます。</li>
-          <li>仕上げにえっちゃんのレモンコショウをのせたら完成！</li>
-        </ol>
+          <h3>作り方</h3>
+          <ol className="step-list">
+            {r.steps.map((step, si) => (
+              <li key={si}>{step}</li>
+            ))}
+          </ol>
 
-        <div className="tip-box">
-          <p className="tip-label">ワンポイント</p>
-          <p>
-            レモンの爽やかな香りと青唐辛子のピリッとした辛さが、とろけるチーズと相性抜群！
-            お酒のおつまみにはもちろん、お弁当のおかずにもおすすめです。
-          </p>
-        </div>
-      </article>
+          <div className="tip-box">
+            <p className="tip-label">{r.tipLabel}</p>
+            <p>{r.tip}</p>
+          </div>
 
-      <article className="card-section">
-        <img
-          className="recipe-photo"
-          src="/images/recipe-veggie-dip.jpg"
-          alt="蒸し野菜とサラダチキンのレモンコショウヨーグルトディップ"
-        />
-        <h2>❷ 蒸し野菜とサラダチキンのレモンコショウヨーグルトディップ</h2>
-        <p className="recipe-lead">
-          野菜本来の甘みを引き立てる、さっぱりヘルシーなディップです。
-          レモンの爽やかな香りと塩こうじの旨みで、野菜がどんどん進みます。
-        </p>
-
-        <h3>材料（2〜3人分）</h3>
-        <p className="ingredient-group">【ディップ】</p>
-        <ul className="ingredient-list">
-          <li>プレーンヨーグルト（無糖）…大さじ3</li>
-          <li>えっちゃんのレモンコショウ…小さじ1〜2（お好みで調整）</li>
-        </ul>
-        <p className="ingredient-group">【具材】</p>
-        <ul className="ingredient-list">
-          <li>サラダチキン</li>
-          <li>れんこん</li>
-          <li>かぼちゃ</li>
-          <li>しいたけ</li>
-          <li>こんにゃく</li>
-          <li>お好みの温野菜</li>
-        </ul>
-
-        <h3>作り方</h3>
-        <ol className="step-list">
-          <li>ヨーグルトと「えっちゃんのレモンコショウ」をよく混ぜます。</li>
-          <li>野菜は蒸すか電子レンジでやわらかく加熱します。</li>
-          <li>サラダチキンと一緒に盛り付け、ディップを添えたら完成！</li>
-        </ol>
-
-        <div className="tip-box">
-          <p className="tip-label">🍋 おいしく食べるポイント</p>
-          <p>
-            レモンの爽やかな香りと青唐辛子のほどよい辛み、塩こうじのまろやかな旨みがヨーグルトと相性抜群！
-            野菜はもちろん、鶏むね肉・豚しゃぶ・エビ・スティック野菜にもよく合います。
-          </p>
-        </div>
-
-        <p className="recipe-closing">
-          「野菜をもっと美味しく、もっと楽しく。」
-          <br />
-          えっちゃんのレモンコショウで、いつもの食卓に爽やかなアクセントを加えてみませんか。
-        </p>
-      </article>
+          {r.closing && (
+            <p className="recipe-closing">
+              {r.closing.split("\n").map((line, li) => (
+                <Fragment key={li}>
+                  {li > 0 && <br />}
+                  {line}
+                </Fragment>
+              ))}
+            </p>
+          )}
+        </article>
+      ))}
     </main>
   );
 }

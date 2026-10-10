@@ -262,3 +262,103 @@ p {
   text-align: center;
   color: var(--fg-muted);
 }
+
+.admin-page {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+}
+.admin-login {
+  max-width: 360px;
+}
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.admin-topbar h1 {
+  font-size: 22px;
+  margin: 0;
+}
+.admin-logout {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--fg-muted);
+  background: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+.admin-saved {
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.admin-error {
+  color: #d64545;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.admin-form section,
+.admin-form fieldset {
+  background: var(--bg-soft);
+  border: none;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.admin-form legend {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+  padding: 0 4px;
+}
+.admin-form h2 {
+  font-size: 18px;
+  margin: 0 0 16px;
+}
+.admin-form h3 {
+  font-size: 15px;
+  color: var(--accent);
+  margin: 20px 0 10px;
+}
+.admin-form label {
+  display: block;
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin-bottom: 12px;
+}
+.admin-form input,
+.admin-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+}
+.admin-form textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+.admin-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.admin-row label {
+  flex: 1;
+}
+.admin-save {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+}
