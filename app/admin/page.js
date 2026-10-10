@@ -3,6 +3,7 @@ import { getContent } from "../../lib/content";
 import { isAuthenticated } from "../../lib/auth";
 import { logoutAction, saveContentAction } from "./actions";
 import RecipeEditor from "./RecipeEditor";
+import SavedAlert from "./SavedAlert";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +29,7 @@ export default async function AdminPage({ searchParams }) {
         </form>
       </div>
 
+      <SavedAlert show={Boolean(searchParams?.saved)} />
       {searchParams?.saved && <p className="admin-saved">保存しました。公開ページに反映されています。</p>}
 
       <form action={saveContentAction} className="admin-form">
