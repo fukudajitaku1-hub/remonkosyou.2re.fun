@@ -1,7 +1,7 @@
 # remonkosyou.2re.fun
 
 「えっちゃんのレモン胡椒」の紹介ページ・レシピページ。
-Next.js（App Router）で構築し、Docker コンテナとして本番サーバー上で稼働しています。
+Next.js 14（App Router）で構築し、Docker コンテナとして本番サーバー上で稼働しています。
 ページの文章は `/admin` の管理画面からパスワードでログインして編集できます。
 
 ## 構成
@@ -13,6 +13,8 @@ remonkosyou/
 │  ├─ page.js               トップページ本体（content/ の内容を描画）
 │  ├─ recipe/page.js        レシピページ本体（レシピは可変件数）
 │  ├─ uploads/[filename]/route.js  アップロード画像の配信（/uploads/<ファイル名>）
+│  ├─ robots.js            robots.txt の生成（/admin 以下をクロール禁止）
+│  ├─ sitemap.js           sitemap.xml の生成（トップ・レシピページ）
 │  ├─ admin/
 │  │  ├─ page.js            管理画面ダッシュボード（/admin、要ログイン）
 │  │  ├─ login/page.js      ログイン画面（/admin/login）
@@ -30,6 +32,7 @@ remonkosyou/
 ├─ public/
 │  └─ images/          ブランド写真・商品写真・初期レシピ写真
 ├─ Dockerfile          本番用マルチステージビルド（standalone 出力）
+├─ .dockerignore       ビルドコンテキストから除外するファイル
 ├─ docker-compose.yml  本番コンテナの起動定義
 └─ next.config.js      output: "standalone"、Server Actions の bodySizeLimit を設定
 ```
