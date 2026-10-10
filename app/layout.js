@@ -3,7 +3,7 @@ import "./globals.css";
 const siteUrl = "https://remonkosyou.2re.fun";
 const title = "えっちゃんのレモン胡椒";
 const description =
-  "えっちゃんのレモン胡椒の紹介ページ。レシピ例は準備中です。公開までしばらくお待ちください。";
+  "武蔵国分寺からお届けする発酵レモンコショウ「えっちゃんのレモンコショウ」の紹介ページ。商品情報、お取り扱い店舗、イベント情報、おすすめレシピをご紹介します。";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),

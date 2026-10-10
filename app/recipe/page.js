@@ -24,14 +24,14 @@ export const metadata = {
 
 export default function Recipe() {
   return (
-    <main className="page-recipe">
+    <main className="page">
       <a className="back-link" href="/">
         ← トップへ戻る
       </a>
 
-      <header className="recipe-header">
+      <header className="page-header">
         <img
-          className="recipe-header-icon"
+          className="page-header-icon"
           src="/images/lemon-kosho.jpg"
           alt="えっちゃんのレモンコショウ"
         />
@@ -41,7 +41,7 @@ export default function Recipe() {
         </p>
       </header>
 
-      <article className="recipe-card">
+      <article className="card-section">
         <img
           className="recipe-photo"
           src="/images/recipe-chikuwa-cheese.jpg"
@@ -75,7 +75,7 @@ export default function Recipe() {
         </div>
       </article>
 
-      <article className="recipe-card">
+      <article className="card-section">
         <img
           className="recipe-photo"
           src="/images/recipe-veggie-dip.jpg"
