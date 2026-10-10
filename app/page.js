@@ -2,18 +2,27 @@ export default function Home() {
   return (
     <main className="page">
       <header className="page-header">
-        <img
+        
+      <h1>
+        えっちゃんの
+        <br />
+        レモンコショウ
+      </h1>
+	  <img
           className="page-header-icon"
           src="/images/lemon-kosho.jpg"
           alt="えっちゃんのレモンコショウ"
         />
-        <h1>えっちゃんのレモンコショウ</h1>
-        <p>武蔵国分寺からお届けする、発酵レモンコショウ。</p>
+	 
+        
+      <section className="card-section">
+	  <p>武蔵国分寺からお届けする、発酵レモンコショウ。</p>
         <p>
           塩こうじをたっぷり使い、爽やかなレモンの香りと青唐辛子のピリっとした辛さを合わせた万能調味料です。
         </p>
-      </header>
 
+      </section>
+      </header>
       <section className="card-section">
         <p>
           鍋料理、焼き魚、お肉、唐揚げ、餃子、パスタなど、いつもの料理がワンランクアップします。
