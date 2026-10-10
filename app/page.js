@@ -4,8 +4,10 @@ export default function Home() {
       <img className="icon" src="/images/lemon-kosho.jpg" alt="えっちゃんのレモンゴショウ" />
       <br />
       <div className="badge">🚧 工事中</div>
-      <p className="notice">すみません。レシピ例は只今準備中です。</p>
-      <div className="domain">remonkosyou.2re.fun</div>
+      <p className="notice">えっちゃんのレモンコショウを使ったレシピを公開しました。</p>
+      <a className="cta-link" href="/recipe">
+        レシピを見る
+      </a>
     </main>
   );
 }
