@@ -205,6 +205,16 @@ p {
   flex: 1;
   min-width: 0;
 }
+@media (max-width: 480px) {
+  .product-info {
+    flex-direction: column;
+  }
+  .product-photo {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 4px;
+  }
+}
 .recipe-lead {
   font-size: 16px;
   line-height: 1.8;
