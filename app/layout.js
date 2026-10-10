@@ -1,4 +1,12 @@
+import { BIZ_UDGothic } from "next/font/google";
 import "./globals.css";
+
+const bizUDGothic = BIZ_UDGothic({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  preload: false,
+  display: "swap",
+});
 
 const siteUrl = "https://remonkosyou.2re.fun";
 const title = "えっちゃんのレモン胡椒";
@@ -35,7 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body className={bizUDGothic.className}>{children}</body>
     </html>
   );
 }
