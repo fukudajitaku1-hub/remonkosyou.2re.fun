@@ -9,22 +9,29 @@ Next.js（App Router）で構築し、Docker コンテナとして本番サー�
 ```
 remonkosyou/
 ├─ app/
-│  ├─ layout.js       ルートレイアウト（<title> などのメタデータ、フォント設定）
-│  ├─ page.js          トップページ本体（content/ の内容を描画）
-│  ├─ recipe/page.js   レシピページ本体
-│  ├─ admin/           管理画面（ログイン・内容編集フォーム、/admin, /admin/login）
-│  ├─ globals.css      ページ全体のスタイル
-│  └─ icon.svg         ファビコン（レモン絵文字、App Router の規約で自動配信）
+│  ├─ layout.js            ルートレイアウト（<title> などのメタデータ、フォント設定）
+│  ├─ page.js               トップページ本体（content/ の内容を描画）
+│  ├─ recipe/page.js        レシピページ本体（レシピは可変件数）
+│  ├─ uploads/[filename]/route.js  アップロード画像の配信（/uploads/<ファイル名>）
+│  ├─ admin/
+│  │  ├─ page.js            管理画面ダッシュボード（/admin、要ログイン）
+│  │  ├─ login/page.js      ログイン画面（/admin/login）
+│  │  ├─ actions.js         Server Actions（ログイン・保存・ログアウト）
+│  │  ├─ RecipeEditor.js    レシピの追加・削除UI（クライアントコンポーネント）
+│  │  └─ SavedAlert.js      保存完了アラート表示（クライアントコンポーネント）
+│  ├─ globals.css          ページ全体のスタイル（管理画面スタイルも含む）
+│  └─ icon.svg             ファビコン（レモン絵文字、App Router の規約で自動配信）
 ├─ lib/
 │  ├─ content.js       コンテンツ（JSON）の読み書き
-│  └─ auth.js          管理画面のパスワード認証・セッションCookie
+│  ├─ auth.js          管理画面のパスワード認証・セッションCookie
+│  └─ uploads.js       アップロード画像の保存
 ├─ content/
 │  └─ default-content.json  初回起動時に使われる初期コンテンツ
 ├─ public/
-│  └─ images/          ブランド写真・商品写真・レシピ写真
+│  └─ images/          ブランド写真・商品写真・初期レシピ写真
 ├─ Dockerfile          本番用マルチステージビルド（standalone 出力）
 ├─ docker-compose.yml  本番コンテナの起動定義
-└─ next.config.js      output: "standalone" を設定
+└─ next.config.js      output: "standalone"、Server Actions の bodySizeLimit を設定
 ```
 
 ## ローカル開発
@@ -34,7 +41,7 @@ npm install
 npm run dev
 ```
 
-`http://localhost:3000` で確認できます。
+`http://localhost:3000` で確認できます。管理画面（`/admin`）もローカルで試す場合は、プロジェクト直下に `.env`（[管理画面の節](#管理画面コンテンツ編集)参照）を置いてください。Next.js の `next dev` が自動で読み込みます。
 
 ## 本番ビルド
 
@@ -65,7 +72,8 @@ docker compose up -d --build
 
 - ログイン: `https://remonkosyou.2re.fun/admin/login` にパスワードでログイン（パスワードは `.env` の `ADMIN_PASSWORD`）
 - `/admin` は未ログインだと自動的に `/admin/login` にリダイレクトされます
-- `/admin` から保存すると、即座に公開ページへ反映されます（再ビルド不要）
+- `/admin` から保存すると、即座に公開ページへ反映されます（再ビルド不要）。保存後はブラウザのアラートで「保存しました。」と表示されます
+- レシピは件数固定ではなく、「＋ レシピを追加」「このレシピを削除」で自由に増減できます（最低1件は残ります）
 - `robots.txt` で `/admin` 以下はクロール禁止にしています
 
 ### 必要な環境変数
