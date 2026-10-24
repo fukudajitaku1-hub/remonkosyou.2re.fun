@@ -29,7 +29,7 @@ export default async function Home() {
         {home.about.map((text, i) => (
           <p key={i}>{text}</p>
         ))}
-        <a className="cta-link" href="/recipe">
+        <a className="cta-link cta-link-wide" href="/recipe">
           レシピを見る
         </a>
       </section>
