@@ -123,6 +123,12 @@ p {
   margin-left: auto;
   margin-right: auto;
 }
+.card-section .cta-link-wide {
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  text-align: center;
+}
 
 .spec-list {
   margin: 0;
