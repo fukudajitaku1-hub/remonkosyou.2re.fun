@@ -67,7 +67,7 @@ export default async function Home() {
         </ul>
         <a
           className="cta-link"
-          href="https://jp.mercari.com/user/profile/472016339"
+          href="https://jp.mercari.com/user/profile/472016339?utm_source=ios&utm_medium=share"
           target="_blank"
           rel="noopener noreferrer"
         >
