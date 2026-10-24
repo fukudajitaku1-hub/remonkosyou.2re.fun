@@ -65,6 +65,14 @@ export default async function Home() {
             </li>
           ))}
         </ul>
+        <a
+          className="cta-link"
+          href="https://jp.mercari.com/user/profile/472016339"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          メルカリで購入する
+        </a>
       </section>
 
       <section className="card-section">
